@@ -1,0 +1,49 @@
+﻿@model IEnumerable<IdentityRole>
+@{
+    int count = 1;
+}
+
+
+<div class="bg-white rounded-md">
+    <div class="rounded-t-md bg-blue-600 p-3">
+        <h5 class="text-white">Remove Group Roles</h5>
+    </div>
+    <div class="p-3">
+        <div class="overflow-x-auto mt-3" style="overflow-y: scroll; height:300px;">
+            <table class="table-auto w-full text-sm text-left rtl:text-right text-gray-500 dataTable">
+                <thead class="text-sm text-gray-700 uppercase bg-gray-100">
+                    <tr>
+                        <th class="px-6 py-3">No.</th>
+                        <th class="px-6 py-3">Name</th>
+                        <th class="px-6 py-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var role in Model)
+                    {
+                        <tr>
+                            <td class="w-1/3 py-3 px-4 border-b">@count</td>
+                            <td class="w-1/3 py-3 px-4 border-b">@role.Name</td>
+                            <td class="w-1/3 py-3 px-4 border-b">
+                                <form asp-action="RemoveGroupRole" asp-controller="Groups" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" value="@ViewBag.GroupID" name="groupID" />
+                                    <input type="hidden" value="@role.Id" name="roleID" />
+                                    <button class="p-2 bg-red-600 hover:bg-red-800 rounded-md text-white">Remove Role</button>
+                                </form>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@* <script type="text/javascript">
+    $(document).ready(function () {
+        $('.dataTables').DataTable();
+    });
+</script> *@

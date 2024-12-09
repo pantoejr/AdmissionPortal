@@ -1,0 +1,70 @@
+﻿<aside class="bg-blue-600 text-white w-56 min-h-screen p-4 absolute lg:relative lg:transform-none transform -translate-x-full lg:translate-x-0 transition-transform duration-300"
+       id="sidebar">
+    <div class="flex items-center space-x-4 p-4 mb-2">
+        <a asp-controller="Home" asp-action="Index" class="text-4xl font-bold">SUC</a>
+    </div>
+    <nav class="space-y-2">
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Home" asp-action="Index">
+            <span class="material-icons">dashboard</span>
+            <span>Dashboard</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Applicants" asp-action="Index">
+            <span class="material-icons">group</span>
+            <span>Applicants</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Tokens" asp-action="Index">
+            <span class="material-icons">token</span>
+            <span>Tokens</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Groups" asp-action="Index">
+            <span class="material-icons">group</span>
+            <span>Groups</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Roles" asp-action="Index">
+            <span class="material-icons">accessibility_new</span>
+            <span>Roles</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Users" asp-action="Index">
+            <span class="material-icons">person</span>
+            <span>Users</span>
+        </a>
+        <div class="relative">
+            <button class="flex items-center space-x-2 text-white hover:bg-blue-800 p-2 rounded w-full"
+                    onclick="toggleDropdown('profileDropdown')">
+                <span class="material-icons">settings</span>
+                <span>Settings</span>
+                <span class="material-icons ml-auto">
+                    expand_more
+                </span>
+            </button>
+            <div class="hidden bg-blue-800 mt-1 space-y-2 p-2 rounded"
+                 id="profileDropdown">
+                <a class="block text-white hover:bg-blue-900 p-2 rounded"
+                   href="changepassword.html">
+                    College Type
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded"
+                   href="csecurityquestion.html">
+                    Country Type
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded"
+                   href="csecurityquestion.html">
+                    County Type
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded"
+                   href="csecurityquestion.html">
+                    Document Type
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded"
+                   href="csecurityquestion.html">
+                    Marital Status Type
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded"
+                   href="editprofile.html">
+                    Edit
+                    Profile
+                </a>
+            </div>
+        </div>
+    </nav>
+</aside>

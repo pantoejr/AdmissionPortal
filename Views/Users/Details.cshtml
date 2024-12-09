@@ -1,0 +1,54 @@
+﻿@model UserViewModel
+@{
+    ViewData["Title"] = "User Details";
+}
+<div class="grid grid-cols-1 bg-white rounded-md mx-auto shadow-sm">
+    <div class="rounded-t-md bg-blue-600 p-3">
+        <h3 class="text-white text-lg">@ViewData["Title"]</h3>
+    </div>
+    <div class="p-5 rounded-b-md">
+        <div class="grid grid-cols-1">
+            <div class="px-3">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-5">
+                    <div class="p-2">
+                        <label class="block mb-2">First Name</label>
+                        <input asp-for="FirstName" readonly class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
+                    </div>
+                    <div class="p-2">
+                        <label class="block mb-2">Last Name</label>
+                        <input asp-for="LastName" readonly class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
+                    </div>
+                    <div class="p-2">
+                        <label class="block mb-2">Phone Number</label>
+                        <input asp-for="PhoneNumber" readonly class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
+                    </div>
+                    <div class="p-2">
+                        <label class="block mb-2">Email</label>
+                        <input asp-for="Email" readonly class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
+                    </div>
+                    <div class="p-2">
+                        <label class="block mb-3">Group</label>
+                        @Html.DropDownList("GroupID", (SelectList)ViewBag.GroupID, "Select Group", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full", @disabled = true })
+                    </div>
+                    <div class="p-2 mb-3">
+                        <label class="block mb-2">Login Hint</label>
+                        <input asp-for="LoginHint" readonly class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
+                    </div>
+                    <div class="flex flex-row flex-nowrap gap-3 p-2">
+                        <div class="basis-full sm:basis-1/2">
+                            <form asp-action="RefreshRoles" method="post">
+                                <input type="hidden" name="GroupID" value="@Model.GroupID" />
+                                <input type="hidden" name="UserID" value="@Model.UserID" />
+                                <button class="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md w-full">Refresh Roles</button>
+                            </form>
+                        </div>
+                        <div class="basis-full sm:basis-1/2">
+                            <a asp-action="Index" class="bg-gray-100 hover:bg-gray-200 rounded-md text-center p-2 block">Back To List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

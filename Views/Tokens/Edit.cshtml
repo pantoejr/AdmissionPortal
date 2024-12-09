@@ -1,0 +1,45 @@
+﻿@model Token
+@{
+    ViewData["Title"] = "Token";
+}
+<div class="grid grid-cols-1 bg-white rounded-md shadow-sm">
+    <div class="rounded-t-md bg-blue-600 p-3">
+        <h3 class="text-white text-lg">@ViewData["Title"]</h3>
+    </div>
+    <div class="p-5 rounded-b-md">
+        <form asp-action="Edit" method="post">
+            <input type="hidden" name="Id" value="@Model.Id"/>
+            <div class="grid sm:grid-cols-2 sm:gap-x-6 sm:px-6">
+                <div class="mb-3">
+                    <label class="block mb-3">Value</label>
+                    <input asp-for="Value" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
+                </div>
+                <div class="flex items-center mb-3">
+                    @Html.CheckBoxFor(model => model.HasEntered, new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md mr-2" })
+                    <label for="HasEntered">Has Entered</label>
+                </div>
+                <div class="mb-3">
+                    <label class="block mb-3">Date Entered</label>
+                    <input asp-for="DateEntered" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
+                </div>
+                <div class="mb-3">
+                    <label class="block mb-3">Expiration Date</label>
+                    <input type="date" asp-for="ExpirationDate" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
+                </div>
+                <div class="flex items-center mb-3">
+                    @Html.CheckBoxFor(model => model.IsActive, new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md mr-2" })
+                    <label for="IsActive">Is Active</label>
+                </div>
+                <div></div>
+                <div class="flex flex-row flex-nowrap gap-3 mt-3">
+                    <div class="basis-full sm:basis-1/2">
+                        <button class="bg-green-600 hover:bg-green-700 text-white p-2 rounded-md w-full">Update</button>
+                    </div>
+                    <div class="basis-full sm:basis-1/2">
+                        <a asp-action="Index" class="bg-gray-100 hover:bg-gray-200 rounded-md text-center p-2 block">Back To List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

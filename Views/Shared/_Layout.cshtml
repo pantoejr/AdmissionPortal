@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Smythe Admission Portal</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AdmissionPortal.styles.css" asp-append-version="true" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/tailwind.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css" />
+    <link rel="icon" href="~/images/smythelogo.png" />
+    @* <link rel="stylesheet" href="~/css/thirdparty.bundle.css" /> *@
+    @* <script src="~/js/thirdparty.bundle.js"></script> *@
+    <script>
+        function toggleDropdown(id) {
+            document.getElementById(id).classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+        }
+
+        window.addEventListener('click', function (event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuButton = document.getElementById('menuButton');
+            if (!sidebar.contains(event.target) && !menuButton.contains(event.target)) {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const notification = document.getElementById('notification');
+
+            if (notification) {
+                notification.style.display = 'block';
+
+                setTimeout(() => {
+                    notification.classList.add('shake');
+                }, 0);
+
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+</head>
+<body class="bg-gray-100">
+    <button class="lg:hidden fixed top-4 left-4 z-50 text-white bg-blue-700 p-2 rounded-md shadow-lg"
+            id="menuButton" onclick="toggleMobileMenu()">
+        <span class="material-icons">menu</span>
+    </button>
+
+    <div class="flex">
+        <partial name="_Navbar" />
+        <main role="main" class="flex-1">
+            <partial name="_AdminHeader" />
+            <div class="px-4">
+                @if (TempData["Message"] != null)
+                {
+                    <div id="notification" class="bg-@TempData["Flag"]-100 border-l-4 border-@TempData["Flag"]-500 text-@TempData["Flag"]-700 p-2 rounded mb-3" role="alert">
+                        <p class="font-bold">Alert!</p>
+                        <p>@TempData["Message"]</p>
+                    </div>
+                }
+                @RenderBody()
+            </div>
+            <p class="text-center mt-5">&copy; @DateTime.Now.Year - Smythe University Admission Portal</p>
+        </main>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.dataTable').DataTable();
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
