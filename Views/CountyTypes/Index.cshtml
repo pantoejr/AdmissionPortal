@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CountyType>
+@{
+    int count = 1;
+    ViewData["Title"] = "List of County Types";
+}
+<div class="grid grid-cols-1 bg-white rounded-md shadow-sm">
+    <div class="rounded-t-md bg-blue-600 p-3">
+        <h3 class="text-white text-lg">@ViewData["Title"]</h3>
+    </div>
+    <div class="p-5 rounded-b-md">
+        <a asp-action="Create" class="bg-blue-600 hover:bg-blue-700 p-2 rounded-md text-white mb-3">Add New</a>
+        <div class="overflow-x-auto mt-2">
+            <table class="table-auto w-full text-sm text-left rtl:text-right text-gray-500 dataTable" width="100%">
+                <thead class="text-sm text-gray-700 uppercase bg-gray-100">
+                    <tr>
+                        <th class="px-6 py-3">No</th>
+                        <th class="px-6 py-3">Name</th>
+                        <th class="px-6 py-3">Status</th>
+                        <th class="px-6 py-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="w-1/3 py-3 px-4 border-b">@count</td>
+                            <td class="w-1/3 py-3 px-4 border-b">@item.Name</td>
+                            @if (item.IsActive == true)
+                            {
+                                <td><span class="bg-green-500 p-2 rounded-md text-white">Active</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="bg-red-500 p-2 rounded-md text-white">InActive</span></td>
+                            }
+                            <td class="w-1/3 py-3 px-4 border-b">
+                                <div class="flex space-x-2">
+                                    <a asp-action="Edit" class="bg-yellow-400 p-2 rounded-md text-black hover:bg-yellow-600" asp-route-Id="@item.Id">Edit</a>
+                                    <a asp-action="Delete" class="bg-red-400 p-2 rounded-md text-white hover:bg-red-600" asp-route-Id="@item.Id">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

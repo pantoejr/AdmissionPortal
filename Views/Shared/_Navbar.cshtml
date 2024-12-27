@@ -12,9 +12,17 @@
             <span class="material-icons">group</span>
             <span>Applicants</span>
         </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="ApplicantDocuments" asp-action="Index">
+            <span class="material-icons">folder</span>
+            <span>Documents</span>
+        </a>
         <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Tokens" asp-action="Index">
             <span class="material-icons">token</span>
             <span>Tokens</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Refrees" asp-action="Index">
+            <span class="material-icons">group</span>
+            <span>Referees</span>
         </a>
         <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Groups" asp-action="Index">
             <span class="material-icons">group</span>
@@ -30,7 +38,7 @@
         </a>
         <div class="relative">
             <button class="flex items-center space-x-2 text-white hover:bg-blue-800 p-2 rounded w-full"
-                    onclick="toggleDropdown('profileDropdown')">
+                    onclick="toggleDropdown('systemSetting')">
                 <span class="material-icons">settings</span>
                 <span>Settings</span>
                 <span class="material-icons ml-auto">
@@ -38,31 +46,75 @@
                 </span>
             </button>
             <div class="hidden bg-blue-800 mt-1 space-y-2 p-2 rounded"
-                 id="profileDropdown">
-                <a class="block text-white hover:bg-blue-900 p-2 rounded"
-                   href="changepassword.html">
-                    College Type
+                 id="systemSetting">
+                <a class="block text-white hover:bg-blue-900 p-2 rounded" asp-action="Index" asp-controller="Colleges">
+                    Colleges
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded" asp-action="Index" asp-controller="Degrees">
+                    Degrees
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded" asp-action="Index" asp-controller="Departments">
+                    Departments
+                </a>
+            </div>
+        </div>
+        <div class="relative">
+            <button class="flex items-center space-x-2 text-white hover:bg-blue-800 p-2 rounded w-full"
+                    onclick="toggleDropdown('typeSettings')">
+                <span class="material-icons">settings</span>
+                <span>Type Settings</span>
+                <span class="material-icons ml-auto">
+                    expand_more
+                </span>
+            </button>
+            <div class="hidden bg-blue-800 mt-1 space-y-2 p-2 rounded"
+                 id="typeSettings">
+                <a class="block text-white hover:bg-blue-900 p-2 rounded" asp-action="Index" asp-controller="CollegeTypes">
+                    College Types
                 </a>
                 <a class="block text-white hover:bg-blue-900 p-2 rounded"
-                   href="csecurityquestion.html">
-                    Country Type
+                   asp-action="Index" asp-controller="CountryTypes">
+                    Country Types
                 </a>
                 <a class="block text-white hover:bg-blue-900 p-2 rounded"
-                   href="csecurityquestion.html">
-                    County Type
+                   asp-action="Index" asp-controller="CountyTypes">
+                    County Types
                 </a>
                 <a class="block text-white hover:bg-blue-900 p-2 rounded"
-                   href="csecurityquestion.html">
-                    Document Type
+                   asp-action="Index" asp-controller="DocumentTypes">
+                    Document Types
                 </a>
                 <a class="block text-white hover:bg-blue-900 p-2 rounded"
-                   href="csecurityquestion.html">
-                    Marital Status Type
+                   asp-action="Index" asp-controller="GenderTypes">
+                    Gender Types
                 </a>
                 <a class="block text-white hover:bg-blue-900 p-2 rounded"
-                   href="editprofile.html">
-                    Edit
-                    Profile
+                   asp-action="Index" asp-controller="MaritalStatusTypes">
+                    Marital Status Types
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded"
+                   asp-action="Index" asp-controller="NationalityTypes">
+                    Nationality Types
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded"
+                   asp-action="Index" asp-controller="OccupationTypes">
+                    Occupation Types
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded"
+                   asp-action="Index" asp-controller="RelationshipTypes">
+                    Relationship  Types
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded"
+                   asp-action="Index" asp-controller="ReligionTypes">
+                    Religion Types
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded"
+                   asp-action="Index" asp-controller="StatusTypes">
+                    Status Types
+                </a>
+                <a class="block text-white hover:bg-blue-900 p-2 rounded"
+                   asp-action="Index" asp-controller="TitleTypes">
+                    Title Types
                 </a>
             </div>
         </div>

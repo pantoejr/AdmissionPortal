@@ -26,7 +26,7 @@ namespace AdmissionPortal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(TokenViewModel model)
         {
-            if (!ModelState.IsValid)
+            if (model.Token == null)
             {
                 SetTempData("Invalid Token", "red");
                 return View(model);
@@ -90,7 +90,10 @@ namespace AdmissionPortal.Controllers
         public async Task<IActionResult> Biodata()
         {
             var session = HttpContext.Session.GetString("Token");
-            var applicant = await _context.Applicants.Include(s => s.StatusType).FirstOrDefaultAsync(x => x.Token.Trim().Contains(session));
+            var applicant = await _context.Applicants
+                .Include(s => s.StatusType)
+                .FirstOrDefaultAsync(x => x.Token.Trim().Contains(session));
+
             SetViewData();
 
             if (applicant != null)

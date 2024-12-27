@@ -10,15 +10,15 @@ namespace AdmissionPortal.Models
         public Applicant? Applicant { get; set; }
 
         [Required]
-        public string FullName { get; set; } = string.Empty;
+        public string? FullName { get; set; } = string.Empty;
         [Required]
-        public string Institution { get; set; } = string.Empty;
+        public string? Institution { get; set; } = string.Empty;
         [Required]
-        public string Occupation { get; set; } = string.Empty;
+        public string? Occupation { get; set; } = string.Empty;
         [Required]
-        public string Email { get; set; } = string.Empty;
+        public string? Email { get; set; } = string.Empty;
         [Required]
-        public string PhoneNo { get; set; } = string.Empty;
+        public string? PhoneNo { get; set; } = string.Empty;
         public bool? IsApproved { get; set; }
     }
 }

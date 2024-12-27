@@ -6,9 +6,9 @@ namespace AdmissionPortal.Models
     public class ApplicantDocument : AuditTrail
     {
         [Required]
-        public string FileName { get; set; }
+        public string? FileName { get; set; }
         [Required]
-        public string FilePath { get; set; }
+        public string? FilePath { get; set; }
         public bool? IsApproved { get; set; }
         public int DocumentTypeID { get; set; }
         [ForeignKey(nameof(DocumentTypeID))]

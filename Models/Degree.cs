@@ -9,7 +9,7 @@ namespace AdmissionPortal.Models
         [ForeignKey(nameof(DepartmentID))]
         public Department? Department { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
     }
 }
