@@ -4,6 +4,7 @@ using AdmissionPortal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdmissionPortal.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241231095135_MadeNullableUpdates")]
+    partial class MadeNullableUpdates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -250,7 +253,7 @@ namespace AdmissionPortal.Migrations
                     b.Property<string>("Telephone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TitleID")
+                    b.Property<int>("TitleID")
                         .HasColumnType("int");
 
                     b.Property<string>("Token")
@@ -1310,7 +1313,9 @@ namespace AdmissionPortal.Migrations
 
                     b.HasOne("AdmissionPortal.Models.TitleType", "TitleType")
                         .WithMany()
-                        .HasForeignKey("TitleID");
+                        .HasForeignKey("TitleID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("AdmissionPortal.Models.CountryType", "UniversityCountryType")
                         .WithMany()

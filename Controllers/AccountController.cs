@@ -66,5 +66,11 @@ namespace AdmissionPortal.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
+
+        public async Task<IActionResult> ChangePassword()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            return View(user);
+        }
     }
 }

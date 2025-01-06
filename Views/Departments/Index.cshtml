@@ -1,6 +1,6 @@
-﻿@model IEnumerable<College>
+﻿@model IEnumerable<Department>
 @{
-    ViewData["Title"] = "List of Colleges";
+    ViewData["Title"] = "List of Departments";
     int count = 1;
 }
 <div class="grid grid-cols-1 bg-white rounded-md shadow-sm">
@@ -15,7 +15,7 @@
                     <tr>
                         <th class="px-6 py-3">No</th>
                         <th class="px-6 py-3">Name</th>
-                        <th class="px-6 py-3">College Type</th>
+                        <th class="px-6 py-3">College</th>
                         <th class="px-6 py-3">Status</th>
                         <th class="px-6 py-3">Actions</th>
                     </tr>
@@ -26,7 +26,7 @@
                         <tr>
                             <td class="w-1/3 py-3 px-4 border-b">@count</td>
                             <td class="w-1/3 py-3 px-4 border-b">@item.Name</td>
-                            <td class="w-1/3 py-3 px-4 border-b">@item.CollegeType.Name</td>
+                            <td class="w-1/3 py-3 px-4 border-b">@item.College.Name</td>
                             @if (item.IsActive == true)
                             {
                                 <td><span class="bg-green-500 p-2 rounded-md text-white">Active</span></td>

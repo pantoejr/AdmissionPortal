@@ -13,13 +13,20 @@
     {
         <div class="flex items-center space-x-4">
             <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-blue-600 font-sm text-md px-5 py-2.5 text-center inline-flex items-center" type="button">
-                <span class="text-gray-500">Hi! @tokenUser.FirstName @tokenUser.MiddleName @tokenUser.LastName</span>
+                @if (!String.IsNullOrEmpty(tokenUser.FirstName) && !String.IsNullOrEmpty(tokenUser.LastName))
+                {
+                    <span class="text-gray-500">hi! @tokenUser.FirstName @tokenUser.MiddleName @tokenUser.LastName</span>
+                }
+                else
+                {
+                    <span class="text-gray-500">Hi! <b>@tokenUser.Token</b> </span>
+                }
                 <span class="material-icons">account_circle</span>
             </button>
             <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
                 <ul class="py-2 text-sm text-blue-700" aria-labelledby="dropdownDefaultButton">
                     <li>
-                        <a asp-controller="Account" asp-action="Logout" class="block px-4 py-2 hover:bg-blue-700 hover:text-white">Sign out</a>
+                        <a asp-controller="Admission" asp-action="Logout" class="block px-4 py-2 hover:bg-blue-700 hover:text-white">Sign out</a>
                     </li>
                 </ul>
             </div>

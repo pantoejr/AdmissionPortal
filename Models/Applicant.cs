@@ -14,7 +14,7 @@ namespace AdmissionPortal.Models
         public StatusType? StatusType { get; set; }
 
         [Display(Name = "Title")]
-        public int TitleID { get; set; }
+        public int? TitleID { get; set; }
         [ForeignKey(nameof(TitleID))]
         public virtual TitleType? TitleType { get; set; }
 
@@ -22,8 +22,7 @@ namespace AdmissionPortal.Models
         public byte[]? ImagePath { get; set; }
 
         [Display(Name = "First Name")]
-        [Required]
-        public string FirstName { get; set; } = String.Empty;
+        public string? FirstName { get; set; } = String.Empty;
 
         [Display(Name = "Middle Name")]
         public string? MiddleName { get; set; }
@@ -32,7 +31,7 @@ namespace AdmissionPortal.Models
         public string LastName { get; set; } = String.Empty;
 
         [Display(Name = "Gender")]
-        public int GenderID { get; set; }
+        public int? GenderID { get; set; }
         [ForeignKey(nameof(GenderID))]
         public virtual GenderType? GenderType { get; set; }
 
@@ -52,6 +51,7 @@ namespace AdmissionPortal.Models
         [ForeignKey(nameof(CountryID))]
         public virtual CountryType? CountryType { get; set; }
 
+        [Display(Name = "County of Origin")]
         public int? CountyID { get; set; }
         [ForeignKey(nameof(CountyID))]
         public virtual CountyType? CountyType { get; set; }
@@ -59,12 +59,12 @@ namespace AdmissionPortal.Models
         public string? State { get; set; }
 
         [Display(Name = "Religious Affiliation")]
-        public int ReligionID { get; set; }
+        public int? ReligionID { get; set; }
         [ForeignKey(nameof(ReligionID))]
         public virtual ReligionType? ReligionType { get; set; }
 
         [Display(Name = "Marital Status")]
-        public int MaritalStatusID { get; set; }
+        public int? MaritalStatusID { get; set; }
         [ForeignKey(nameof(MaritalStatusID))]
         public virtual MaritalStatusType? MaritalStatusType { get; set; }
 
@@ -74,7 +74,7 @@ namespace AdmissionPortal.Models
         //Address of Applicant
 
         [Display(Name = "Current Address")]
-        public string CurrentAddress { get; set; } = string.Empty;
+        public string? CurrentAddress { get; set; } = string.Empty;
 
         [Display(Name = "Phone Number")]
         public string? PhoneNumber { get; set; } = string.Empty;
@@ -83,19 +83,27 @@ namespace AdmissionPortal.Models
         public string? EmailAddress { get; set; } = string.Empty;
 
         //Permanent Home Address if different from the postal Address
+        [Display(Name = "Address Line 1")]
         public string? AddressLine1 { get; set; } = string.Empty;
+        [Display(Name = "Address Line 2")]
         public string? AddressLine2 { get; set; } = string.Empty;
+        [Display(Name = "Address Line 3")]
         public string? AddressLine3 { get; set; } = string.Empty;
 
         //Next of Kin Information
         [Display(Name = "Name of Next of Kin")]
         public string? NextofKin { get; set; } = string.Empty;
+
+        [Display(Name = "Occupation")]
         public int? OccupationID { get; set; }
         [ForeignKey(nameof(OccupationID))]
         public virtual OccupationType? OccupationType { get; set; }
 
+        [Display(Name = "Emergency Contact")]
         public string? EmergencyContact { get; set; } = string.Empty;
-        public int RelationshipTypeID { get; set; }
+
+        [Display(Name = "Relationship")]
+        public int? RelationshipTypeID { get; set; }
         [ForeignKey(nameof(RelationshipTypeID))]
         public virtual RelationshipType? RelationshipType { get; set; }
         public string? Address { get; set; } = string.Empty;

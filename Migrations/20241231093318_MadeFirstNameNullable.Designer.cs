@@ -4,6 +4,7 @@ using AdmissionPortal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdmissionPortal.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241231093318_MadeFirstNameNullable")]
+    partial class MadeFirstNameNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,6 +145,7 @@ namespace AdmissionPortal.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CurrentAddress")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateofBirth")
@@ -196,7 +200,7 @@ namespace AdmissionPortal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MaritalStatusID")
+                    b.Property<int>("MaritalStatusID")
                         .HasColumnType("int");
 
                     b.Property<string>("MiddleName")
@@ -226,10 +230,10 @@ namespace AdmissionPortal.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RelationshipTypeID")
+                    b.Property<int>("RelationshipTypeID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ReligionID")
+                    b.Property<int>("ReligionID")
                         .HasColumnType("int");
 
                     b.Property<string>("Scholarship")
@@ -250,7 +254,7 @@ namespace AdmissionPortal.Migrations
                     b.Property<string>("Telephone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TitleID")
+                    b.Property<int>("TitleID")
                         .HasColumnType("int");
 
                     b.Property<string>("Token")
@@ -1286,7 +1290,9 @@ namespace AdmissionPortal.Migrations
 
                     b.HasOne("AdmissionPortal.Models.MaritalStatusType", "MaritalStatusType")
                         .WithMany()
-                        .HasForeignKey("MaritalStatusID");
+                        .HasForeignKey("MaritalStatusID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("AdmissionPortal.Models.NationalityType", "NationalityType")
                         .WithMany()
@@ -1298,11 +1304,15 @@ namespace AdmissionPortal.Migrations
 
                     b.HasOne("AdmissionPortal.Models.RelationshipType", "RelationshipType")
                         .WithMany()
-                        .HasForeignKey("RelationshipTypeID");
+                        .HasForeignKey("RelationshipTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("AdmissionPortal.Models.ReligionType", "ReligionType")
                         .WithMany()
-                        .HasForeignKey("ReligionID");
+                        .HasForeignKey("ReligionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("AdmissionPortal.Models.StatusType", "StatusType")
                         .WithMany()
@@ -1310,7 +1320,9 @@ namespace AdmissionPortal.Migrations
 
                     b.HasOne("AdmissionPortal.Models.TitleType", "TitleType")
                         .WithMany()
-                        .HasForeignKey("TitleID");
+                        .HasForeignKey("TitleID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("AdmissionPortal.Models.CountryType", "UniversityCountryType")
                         .WithMany()

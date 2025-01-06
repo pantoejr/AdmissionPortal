@@ -1,59 +1,52 @@
 ﻿<aside class="bg-blue-600 text-white w-56 min-h-screen p-4 absolute lg:relative lg:transform-none transform -translate-x-full lg:translate-x-0 transition-transform duration-300"
        id="sidebar">
     <div class="flex items-center space-x-4 p-4 mb-2">
-        <a asp-controller="Admission" asp-action="Dashboard" class="text-4xl font-bold">SUC</a>
+        <a asp-controller="Admission" asp-action="Biodata" class="text-4xl font-bold">SUC</a>
     </div>
     <nav class="space-y-2">
-        @* <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Home" asp-action="Index">
-            <span class="material-icons">dashboard</span>
-            <span>Dashboard</span>
-        </a>
-        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Applicants" asp-action="Index">
-            <span class="material-icons">group</span>
-            <span>Applicants</span>
-        </a>
-        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Tokens" asp-action="Index">
-            <span class="material-icons">token</span>
-            <span>Tokens</span>
-        </a>
-        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Groups" asp-action="Index">
-            <span class="material-icons">group</span>
-            <span>Groups</span>
-        </a>
-        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Roles" asp-action="Index">
-            <span class="material-icons">accessibility_new</span>
-            <span>Roles</span>
-        </a>
-        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Users" asp-action="Index">
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Admission" asp-action="Biodata">
             <span class="material-icons">person</span>
-            <span>Users</span>
+            <span>Biodata</span>
         </a>
-        <div class="relative">
-            <button class="flex items-center space-x-2 text-white hover:bg-blue-800 p-2 rounded w-full"
-                    onclick="toggleDropdown('profileDropdown')">
-                <span class="material-icons">settings</span>
-                <span>Settings</span>
-                <span class="material-icons ml-auto">
-                    expand_more
-                </span>
-            </button>
-            <div class="hidden bg-blue-800 mt-1 space-y-2 p-2 rounded"
-                 id="profileDropdown">
-                <a class="block text-white hover:bg-blue-900 p-2 rounded"
-                   href="changepassword.html">
-                    Change Password
-                </a>
-                <a class="block text-white hover:bg-blue-900 p-2 rounded"
-                   href="csecurityquestion.html">
-                    Change Security
-                    Question
-                </a>
-                <a class="block text-white hover:bg-blue-900 p-2 rounded"
-                   href="editprofile.html">
-                    Edit
-                    Profile
-                </a>
-            </div>
-        </div> *@
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Admission" asp-action="Academic">
+            <span class="material-icons">menu_book</span>
+            <span>Academic</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Admission" asp-action="Program">
+            <span class="material-icons">info</span>
+            <span>Program</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Admission" asp-action="References">
+            <span class="material-icons">group</span>
+            <span>References</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Admission" asp-action="Documents">
+            <span class="material-icons">description</span>
+            <span>Documents</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Admission" asp-action="Photo">
+            <span class="material-icons">image</span>
+            <span>Photo</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Admission" asp-action="Summary">
+            <span class="material-icons">summarize</span>
+            <span>Summary</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Admission" asp-action="Verify">
+            <span class="material-icons">verified</span>
+            <span>Verify</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Admission" asp-action="Status">
+            <span class="material-icons">
+                signal_wifi_statusbar_null
+            </span>
+            <span>Status</span>
+        </a>
+        <a class="flex items-center space-x-2 text-white active:bg-blue-800 hover:bg-blue-800 p-2 rounded" asp-controller="Admission" asp-action="Admission">
+            <span class="material-icons">
+                book_online
+            </span>
+            <span>Admission</span>
+        </a>
     </nav>
 </aside>
