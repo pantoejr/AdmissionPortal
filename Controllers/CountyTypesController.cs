@@ -72,7 +72,7 @@ namespace AdmissionPortal.Controllers
         public async Task<IActionResult> Delete(int Id)
         {
             var countyType = await _context.CountyTypes.FirstOrDefaultAsync(x => x.Id == Id);
-            countyType.IsActive = false;
+            countyType!.IsActive = false;
             _context.CountyTypes.Update(countyType);
             await _context.SaveChangesAsync();
             TempData["Message"] = "CountyType disabled sucessfully";

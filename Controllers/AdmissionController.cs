@@ -48,7 +48,7 @@ namespace AdmissionPortal.Controllers
                 token.IsActive = false;
                 _context.Tokens.Update(token);
                 await _context.SaveChangesAsync();
-                SetTempData("Token is expired", "red");
+                SetTempData("Token's not valid, please contact administrator", "red");
                 return RedirectToAction("Login");
             }
 
@@ -155,13 +155,17 @@ namespace AdmissionPortal.Controllers
 
             if (applicant != null)
             {
-                if (applicant.StatusType.Name.Trim().Contains("Approved"))
+                if (applicant.TitleID != null || applicant.NationalityID != null || applicant.CountryID != null || applicant.CountryID != null || applicant.ReligionID != null || applicant.MaritalStatusID != null)
                 {
-                    TempData["Status"] = "Approved";
-                }
-                else if (applicant.StatusType.Name.Trim().Contains("Created"))
-                {
-                    TempData["Status"] = "Created";
+                    ViewData["TitleID"] = new SelectList(_context.TitleTypes, "Id", "Name", applicant.TitleID);
+                    ViewData["GenderID"] = new SelectList(_context.GenderTypes, "Id", "Name", applicant.GenderID);
+                    ViewData["NationalityID"] = new SelectList(_context.Nationalities, "Id", "Name", applicant.NationalityID);
+                    ViewData["CountryID"] = new SelectList(_context.CountryTypes, "Id", "Name", applicant.CountryID);
+                    ViewData["CountyID"] = new SelectList(_context.CountyTypes, "Id", "Name", applicant.CountyID);
+                    ViewData["ReligionID"] = new SelectList(_context.ReligionTypes, "Id", "Name", applicant.ReligionID);
+                    ViewData["MaritalStatusID"] = new SelectList(_context.MaritalStatuses, "Id", "Name", applicant.MaritalStatusID);
+                    ViewData["OccupationID"] = new SelectList(_context.OccupationTypes, "Id", "Name", applicant.OccupationID);
+                    ViewData["RelationshipTypeID"] = new SelectList(_context.RelationshipTypes, "Id", "Name", applicant.RelationshipTypeID);
                 }
                 return View(applicant);
             }
@@ -170,11 +174,25 @@ namespace AdmissionPortal.Controllers
         }
 
         [HttpPost]
-        [AdmissionFilter]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Biodata(Applicant applicant)
         {
+            var applicantExist = _context.Applicants.Any(e=>e.Token == applicant.Token);
+            if (applicantExist)
+            {
+                applicant.IsActive = true;
+                _context.Applicants.Update(applicant);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Academic));
+            }
             return View(applicant);
+        }
+
+        [HttpGet]
+        [AdmissionFilter]
+        public async Task<IActionResult> Academic()
+        {
+            return View();
         }
 
         private void SetViewData()

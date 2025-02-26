@@ -295,7 +295,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasIndex("UniversityCountryID");
 
-                    b.ToTable("Applicants");
+                    b.ToTable("Applicants", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.ApplicantDocument", b =>
@@ -339,7 +339,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasIndex("DocumentTypeID");
 
-                    b.ToTable("applicantDocuments");
+                    b.ToTable("applicantDocuments", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.College", b =>
@@ -391,7 +391,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasIndex("CollegeTypeID");
 
-                    b.ToTable("Colleges");
+                    b.ToTable("Colleges", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.CollegeType", b =>
@@ -423,7 +423,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CollegeTypes");
+                    b.ToTable("CollegeTypes", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.CountryType", b =>
@@ -455,7 +455,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CountryTypes");
+                    b.ToTable("CountryTypes", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.CountyType", b =>
@@ -487,7 +487,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CountyTypes");
+                    b.ToTable("CountyTypes", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.Degree", b =>
@@ -524,7 +524,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasIndex("DepartmentID");
 
-                    b.ToTable("Degrees");
+                    b.ToTable("Degrees", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.Department", b =>
@@ -562,7 +562,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasIndex("CollegeID");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.DocumentType", b =>
@@ -594,7 +594,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DocumentTypes");
+                    b.ToTable("DocumentTypes", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.GenderType", b =>
@@ -626,7 +626,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GenderTypes");
+                    b.ToTable("GenderTypes", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.Group", b =>
@@ -662,7 +662,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Groups");
+                    b.ToTable("Groups", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.GroupRole", b =>
@@ -701,7 +701,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasIndex("RoleID");
 
-                    b.ToTable("GroupRoles");
+                    b.ToTable("GroupRoles", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.GroupUser", b =>
@@ -740,7 +740,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasIndex("GroupID");
 
-                    b.ToTable("GroupUsers");
+                    b.ToTable("GroupUsers", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.MailData", b =>
@@ -768,7 +768,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MailDatas");
+                    b.ToTable("MailDatas", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.MaritalStatusType", b =>
@@ -800,7 +800,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MaritalStatuses");
+                    b.ToTable("MaritalStatuses", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.NationalityType", b =>
@@ -832,7 +832,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Nationalities");
+                    b.ToTable("Nationalities", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.OccupationType", b =>
@@ -864,7 +864,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OccupationTypes");
+                    b.ToTable("OccupationTypes", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.Referee", b =>
@@ -920,7 +920,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasIndex("ApplicantID");
 
-                    b.ToTable("Referees");
+                    b.ToTable("Referees", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.RelationshipType", b =>
@@ -952,7 +952,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RelationshipTypes");
+                    b.ToTable("RelationshipTypes", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.ReligionType", b =>
@@ -984,7 +984,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ReligionTypes");
+                    b.ToTable("ReligionTypes", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.StatusType", b =>
@@ -1016,7 +1016,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StatusTypes");
+                    b.ToTable("StatusTypes", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.TitleType", b =>
@@ -1048,7 +1048,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TitleTypes");
+                    b.ToTable("TitleTypes", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.Token", b =>
@@ -1090,7 +1090,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tokens");
+                    b.ToTable("Tokens", (string)null);
                 });
 
             modelBuilder.Entity("AdmissionPortal.Models.YearType", b =>
@@ -1122,7 +1122,7 @@ namespace AdmissionPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("YearTypes");
+                    b.ToTable("YearTypes", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

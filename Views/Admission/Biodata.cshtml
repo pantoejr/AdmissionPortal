@@ -21,13 +21,20 @@
             <h3 class="text-white text-1xl mb-1">BIODATA</h3>
         </div>
         <div class="container bg-white p-4">
-            <form method="post" asp-action="Biodata">
+            <form method="post" asp-controller="Admission" asp-action="Biodata">
                 <p class="text-blue-600 text-md mb-3">PERSONAL INFORMATION</p>
-                <input type="hidden" name="Student" asp-for="Token" />
+                <input type="hidden" asp-for="Token" />
+                <input type="hidden" asp-for="Id" />
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-4">
                     <div class="mb-2">
                         <label for="TitleID" class="block text-sm font-medium text-gray-700 mb-2">Title</label>
-                        @Html.DropDownList("TitleID", (SelectList)ViewBag.TitleID, "Select Title", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full" })
+                        @if(IsDisabled() == true){
+                            @Html.DropDownList("TitleID", (SelectList)ViewBag.TitleID, "Select Title", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @disabled = true })
+                        }
+                        else
+                        {
+                            @Html.DropDownList("TitleID", (SelectList)ViewBag.TitleID, "Select Title", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full" })
+                        }
                     </div>
                     <div></div>
                     <div></div>
@@ -37,11 +44,11 @@
                         @Html.LabelFor(model => model.FirstName, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            @Html.TextBoxFor(model => model.FirstName, new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full", @required = true, @disabled = true })
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @required = true, @disabled = true })
                         }
                         else
                         {
-                            @Html.TextBoxFor(model => model.FirstName, new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full", @required = true })
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @required = true })
                         }
                     </div>
                     <div class="mb-3">
@@ -59,11 +66,11 @@
                         @Html.LabelFor(model => model.LastName, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            @Html.TextBoxFor(model => model.LastName, new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full", @disabled = true, })
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @disabled = true, })
                         }
                         else
                         {
-                            @Html.TextBoxFor(model => model.LastName, new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full", @required = true })
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @required = true })
                         }
                     </div>
                 </div>
@@ -72,66 +79,66 @@
                         @Html.LabelFor(model => model.GenderID, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            @Html.DropDownList("GenderID", (SelectList)ViewBag.GenderID, "Select Gender", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full", @disabled = true })
+                            @Html.DropDownList("GenderID", (SelectList)ViewBag.GenderID, "Select Gender", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @disabled = true })
                         }
                         else
                         {
-                            @Html.DropDownList("GenderID", (SelectList)ViewBag.GenderID, "Select Gender", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full" })
+                            @Html.DropDownList("GenderID", (SelectList)ViewBag.GenderID, "Select Gender", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @required = true })
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.DateofBirth, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            <input asp-for="DateofBirth" type="date" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" disabled />
+                            <input asp-for="DateofBirth" type="date" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" disabled />
                         }
                         else
                         {
-                            <input asp-for="DateofBirth" type="date" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
+                            <input asp-for="DateofBirth" type="date" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" required />
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.Hometown_State, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            <input asp-for="Hometown_State" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" disabled />
+                            <input asp-for="Hometown_State" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" disabled />
                         }
                         else
                         {
-                            <input asp-for="Hometown_State" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
+                            <input asp-for="Hometown_State" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" required />
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.NationalityID, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            @Html.DropDownList("NationalityID", (SelectList)ViewBag.NationalityID, "Select Nationality", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full", @disabled = true })
+                            @Html.DropDownList("NationalityID", (SelectList)ViewBag.NationalityID, "Select Nationality", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @disabled = true })
                         }
                         else
                         {
-                            @Html.DropDownList("NationalityID", (SelectList)ViewBag.NationalityID, "Select Nationality", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full" })
+                            @Html.DropDownList("NationalityID", (SelectList)ViewBag.NationalityID, "Select Nationality", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @required = true })
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.CountryID, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            @Html.DropDownList("CountryID", (SelectList)ViewBag.CountryID, "Select Country", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full", @disabled = true })
+                            @Html.DropDownList("CountryID", (SelectList)ViewBag.CountryID, "Select Country", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @disabled = true })
                         }
                         else
                         {
-                            @Html.DropDownList("CountryID", (SelectList)ViewBag.CountryID, "Select Country", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full" })
+                            @Html.DropDownList("CountryID", (SelectList)ViewBag.CountryID, "Select Country", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @required = true })
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.CountyID, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            @Html.DropDownList("CountyID", (SelectList)ViewBag.CountyID, "Select County", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full", @disabled = true })
+                            @Html.DropDownList("CountyID", (SelectList)ViewBag.CountyID, "Select County", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @disabled = true })
                         }
                         else
                         {
-                            @Html.DropDownList("CountyID", (SelectList)ViewBag.CountyID, "Select County", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full" })
+                            @Html.DropDownList("CountyID", (SelectList)ViewBag.CountyID, "Select County", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @required = true })
                         }
                     </div>
                     <div class="mb-3">
@@ -142,29 +149,29 @@
                         }
                         else
                         {
-                            <input asp-for="State" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
+                            <input asp-for="State" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.ReligionID, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            @Html.DropDownList("ReligionID", (SelectList)ViewBag.ReligionID, "Select Religion", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full", @disabled = true })
+                            @Html.DropDownList("ReligionID", (SelectList)ViewBag.ReligionID, "Select Religion", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @disabled = true })
                         }
                         else
                         {
-                            @Html.DropDownList("RelitionID", (SelectList)ViewBag.ReligionID, "Select Religion", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full" })
+                            @Html.DropDownList("ReligionID", (SelectList)ViewBag.ReligionID, "Select Religion", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @required = true })
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.MaritalStatusID, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            @Html.DropDownList("MaritalStatusID", (SelectList)ViewBag.MaritalStatusID, "Select Marital Status", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full", @disabled = true })
+                            @Html.DropDownList("MaritalStatusID", (SelectList)ViewBag.MaritalStatusID, "Select Marital Status", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @disabled = true })
                         }
                         else
                         {
-                            @Html.DropDownList("MaritalStatusID", (SelectList)ViewBag.MaritalStatusID, "Select Marital Status", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full" })
+                            @Html.DropDownList("MaritalStatusID", (SelectList)ViewBag.MaritalStatusID, "Select Marital Status", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @required = true })
                         }
                     </div>
                     <div class="mb-3">
@@ -175,40 +182,40 @@
                         }
                         else
                         {
-                            <input asp-for="NumberofChildren" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
+                            <input asp-for="NumberofChildren" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full"  />
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.CurrentAddress, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            <input asp-for="CurrentAddress" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" disabled />
+                            <input asp-for="CurrentAddress" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" disabled />
                         }
                         else
                         {
-                            <input asp-for="CurrentAddress" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
+                            <input asp-for="CurrentAddress" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" required />
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.PhoneNumber, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            <input asp-for="PhoneNumber" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" disabled />
+                            <input asp-for="PhoneNumber" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" disabled />
                         }
                         else
                         {
-                            <input asp-for="PhoneNumber" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
+                            <input asp-for="PhoneNumber" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" required />
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.EmailAddress, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            <input asp-for="EmailAddress" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" disabled />
+                            <input asp-for="EmailAddress" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" disabled />
                         }
                         else
                         {
-                            <input asp-for="EmailAddress" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
+                            <input asp-for="EmailAddress" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" required />
                         }
                     </div>
                     <div class="mb-3">
@@ -219,7 +226,7 @@
                         }
                         else
                         {
-                            <input asp-for="AddressLine1" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
+                            <input asp-for="AddressLine1" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
                         }
                     </div>
                     <div class="mb-3">
@@ -230,7 +237,7 @@
                         }
                         else
                         {
-                            <input asp-for="AddressLine2" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
+                            <input asp-for="AddressLine2" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
                         }
                     </div>
                     <div class="mb-3">
@@ -241,40 +248,40 @@
                         }
                         else
                         {
-                            <input asp-for="AddressLine3" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
+                            <input asp-for="AddressLine3" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.NextofKin, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            <input asp-for="NextofKin" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" disabled />
+                            <input asp-for="NextofKin" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" disabled />
                         }
                         else
                         {
-                            <input asp-for="NextofKin" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
+                            <input asp-for="NextofKin" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" required />
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.OccupationID, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            @Html.DropDownList("OccupationID", (SelectList)ViewBag.OccupationID, "Select Occupation", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full", @disabled = true })
+                            @Html.DropDownList("OccupationID", (SelectList)ViewBag.OccupationID, "Select Occupation", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full", @disabled = true })
                         }
                         else
                         {
-                            @Html.DropDownList("OccupationID", (SelectList)ViewBag.OccupationID, "Select Occupation", new { @class = "p-2 border border-blue-600 bg-gray-100 rounded-md w-full" })
+                            @Html.DropDownList("OccupationID", (SelectList)ViewBag.OccupationID, "Select Occupation", new { @class = "p-2 border border-red-600 bg-gray-100 rounded-md w-full" })
                         }
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.EmergencyContact, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
                         @if (IsDisabled() == true)
                         {
-                            <input asp-for="EmergencyContact" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" disabled />
+                            <input asp-for="EmergencyContact" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" disabled />
                         }
                         else
                         {
-                            <input asp-for="EmergencyContact" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
+                            <input asp-for="EmergencyContact" class="p-2 border border-red-600 bg-gray-100 rounded-md w-full" required />
                         }
                     </div>
                     <div class="mb-3">
@@ -320,6 +327,43 @@
                         {
                             <input asp-for="Telephone" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" required />
                         }
+                    </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Disability, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
+                        @if (IsDisabled() == true)
+                        {
+                            <input asp-for="Disability" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded" disabled />
+                        }
+                        else
+                        {
+                            <input asp-for="Disability" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded" />
+                        }
+                    </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.DisabilityAttribute, new { @class = "block text-sm font-medium text-gray-700 mb-2" })
+                        @if (IsDisabled() == true)
+                        {
+                            <input asp-for="DisabilityAttribute" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" disabled />
+                        }
+                        else
+                        {
+                            <input asp-for="DisabilityAttribute" class="p-2 border border-blue-600 bg-gray-100 rounded-md w-full" />
+                        }
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-4">
+                    <div>
+                        @if (IsDisabled() == true)
+                        {
+                            <button class="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md" disabled>Save and Continue</button>
+                        }
+                        else
+                        {
+                            <button class="p-2 bg-green-600 hover:bg-green-700 text-white rounded-md w-full">Save and Continue</button>
+                        }
+                    </div>
+                    <div>
+                        <a asp-action="Academic" class="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md w-full">Next</a>
                     </div>
                 </div>
             </form>

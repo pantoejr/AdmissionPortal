@@ -5,6 +5,8 @@ namespace AdmissionPortal.Models
 {
     public class Referee : AuditTrail
     {
+        [Key]
+        public int Id { get; set; }
         public int ApplicantID { get; set; }
         [ForeignKey(nameof(ApplicantID))]
         public Applicant? Applicant { get; set; }

@@ -5,6 +5,8 @@ namespace AdmissionPortal.Models
 {
     public class Degree : AuditTrail
     {
+        [Key]
+        public int Id { get; set; }
         public int DepartmentID { get; set; }
         [ForeignKey(nameof(DepartmentID))]
         public Department? Department { get; set; }

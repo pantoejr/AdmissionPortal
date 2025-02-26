@@ -4,6 +4,8 @@ namespace AdmissionPortal.Models
 {
     public class Token : AuditTrail
     {
+        [Key]
+        public int Id { get; set; }
         [Required]
         [StringLength(10)]
         public string Value { get; set; } = String.Empty;

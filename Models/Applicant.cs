@@ -5,6 +5,8 @@ namespace AdmissionPortal.Models
 {
     public class Applicant : AuditTrail
     {
+        [Key]
+        public int Id { get; set; }
         public string? StudentID { get; set; }
         public string? Token { get; set; } = string.Empty;
 
